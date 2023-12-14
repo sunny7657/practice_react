@@ -3,11 +3,11 @@ import { Component } from 'react';
 export class Counter extends Component {
   state = { counter: 0 };
 
-  onIncrement = () => {
+  handleIncrement = () => {
     this.setState(prevState => ({ counter: prevState.counter + 1 }));
   };
 
-  onDecrement = () => {
+  handleDecrement = () => {
     this.setState(prevState => ({ counter: prevState.counter - 1 }));
   };
 
@@ -28,10 +28,10 @@ export class Counter extends Component {
           {this.state.counter}
         </p>
         <div style={{ display: 'flex', gap: '20px' }}>
-          <button className="btn-counter" onClick={this.onIncrease}>
+          <button className="btn-counter" onClick={this.handleIncrement}>
             +
           </button>
-          <button className="btn-counter" onClick={this.onDecrease}>
+          <button className="btn-counter" onClick={this.handleDecrement}>
             -
           </button>
         </div>
