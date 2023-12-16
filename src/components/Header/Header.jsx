@@ -3,19 +3,17 @@ export const Header = ({ showModal }) => {
   return (
     <nav className="navbar bg-dark mb-3">
       <div
-        className="container-fluid"
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: 'black',
+          backgroundColor: '#a3adff',
           margin: '0',
           padding: '3px 15px',
           borderRadius: '6px',
         }}
       >
         <h2
-          className="navbar-brand mb-0 h1 text-success"
           style={{
             textTransform: 'uppercase',
           }}

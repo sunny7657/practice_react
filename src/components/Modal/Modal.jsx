@@ -1,21 +1,50 @@
-export const Modal = ({ children }) => {
+export const Modal = ({ children, showModal }) => {
   return (
     <div
-      className="modal fade show"
-      style={{ display: 'block', backdropFilter: 'blur(5px)' }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backdropFilter: 'blur(5px)',
+      }}
     >
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title"> Modal</h5>
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="modal-body">{children}</div>
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          border: '1px solid #4a50cd',
+          background: '#a3adff',
+          transform: 'translate(-50%,-50%)',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          borderRadius: '4px',
+          outline: 'none',
+          padding: '20px',
+          minWidth: '300px',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <h2> Modal</h2>
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={showModal}
+          >
+            Close
+          </button>
         </div>
+
+        <p>{children}</p>
       </div>
     </div>
   );
