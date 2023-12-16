@@ -8,17 +8,21 @@ export class App extends Component {
     isShowModal: false,
   };
 
-  handleOpenModal = () => this.setState({ isShowModal: true });
+  // handleOpenModal = () => this.setState({ isShowModal: true });
 
-  handleCloseModal = () => this.setState({ isShowModal: false });
+  // handleCloseModal = () => this.setState({ isShowModal: false });
+
+  toggleModal = () => {
+    this.setState(prevState => ({ isShowModal: !prevState.isShowModal }));
+  };
 
   render() {
     return (
       <>
-        <Header showModal={this.handleOpenModal} />
+        <Header showModal={this.toggleModal} />
         <Counter />
         {this.state.isShowModal && (
-          <Modal showModal={this.handleCloseModal}>querty</Modal>
+          <Modal showModal={this.toggleModal}>querty</Modal>
         )}
       </>
     );
