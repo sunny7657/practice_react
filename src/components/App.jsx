@@ -3,11 +3,14 @@ import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
 import { Modal } from './Modal/Modal';
 import { FormCreateTodo } from './Forms/FormCreateTodo';
-// import { data } from '../components';
+import data from './data.json';
+import { TodoList } from './TodoList/TodoList';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
     isShowModal: false,
+    todo: data,
   };
 
   // handleOpenModal = () => this.setState({ isShowModal: true });
@@ -18,14 +21,37 @@ export class App extends Component {
     this.setState(prevState => ({ isShowModal: !prevState.isShowModal }));
   };
 
-  sendUserData = data => {
-    const newUser = { ...data, id: 'nbm' };
-    console.log('data :>> ', newUser);
+  // sendUserData = data => {
+  //   const newUser = { ...data, id: 'nbm' };
+  //   // console.log('data :>> ', newUser);
+  // };
+
+  createTodo = data => {
+    const newTodo = {
+      ...data,
+      id: nanoid(),
+      completed: false,
+    };
+    const isDublicated = this.state.todo.find(el => el.title === data.title);
+    if (isDublicated) return;
+    this.setState(prev => ({ todo: [...prev.todo, newTodo] }));
   };
 
-  createTodo = data => {};
+  deleteTodo = id => {
+    this.setState(prev => ({ todo: prev.todo.filter(el => el.id !== id) }));
+  };
+
+  updateTodo = id => {
+    this.setState(prev => ({
+      todo: prev.todo.map(el => {
+        if (el.id === id) return { ...el, completed: !el.completed };
+        return el;
+      }),
+    }));
+  };
 
   render() {
+    console.log(this.state);
     return (
       <>
         <Header showModal={this.toggleModal} />
@@ -33,7 +59,12 @@ export class App extends Component {
         {this.state.isShowModal && (
           <Modal showModal={this.toggleModal}>querty</Modal>
         )}
-        <FormCreateTodo sendUserData={this.sendUserData} />
+        <FormCreateTodo createTodo={this.createTodo} />
+        <TodoList
+          todo={this.state.todo}
+          deleteTodo={this.deleteTodo}
+          updateTodo={this.updateTodo}
+        />
       </>
     );
   }

@@ -12,7 +12,8 @@ export class FormCreateTodo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.sendUserData(this.state);
+    this.props.createTodo(this.state);
+    this.setState({ title: '', description: '' });
   };
 
   render() {
