@@ -2,8 +2,8 @@ import { Component } from 'react';
 
 export class FormCreateTodo extends Component {
   state = {
-    email: '',
-    password: '',
+    title: '',
+    description: '',
   };
 
   handleChange = ({ target: { value, name } }) => {
@@ -37,28 +37,28 @@ export class FormCreateTodo extends Component {
           }}
         >
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
+            Title
           </label>
           <input
-            name="email"
-            type="email"
+            name="title"
+            type="text"
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            value={this.state.email}
+            value={this.state.title}
             onChange={this.handleChange}
           />
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
+            Description
           </label>
           <input
-            name="password"
-            type="password"
+            name="description"
+            type="text"
             className="form-control"
             id="exampleInputPassword1"
-            value={this.state.password}
+            value={this.state.description}
             onChange={this.handleChange}
           />
         </div>
@@ -73,7 +73,7 @@ export class FormCreateTodo extends Component {
           </label>
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Create
         </button>
       </form>
     );

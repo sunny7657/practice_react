@@ -3,6 +3,7 @@ import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
 import { Modal } from './Modal/Modal';
 import { FormCreateTodo } from './Forms/FormCreateTodo';
+// import { data } from '../components';
 
 export class App extends Component {
   state = {
@@ -18,8 +19,11 @@ export class App extends Component {
   };
 
   sendUserData = data => {
-    console.log('data :>> ', data);
+    const newUser = { ...data, id: 'nbm' };
+    console.log('data :>> ', newUser);
   };
+
+  createTodo = data => {};
 
   render() {
     return (
