@@ -1,5 +1,4 @@
 export const Header = ({ showModal }) => {
-  console.log(10 < 12 && 'component');
   return (
     <nav className="navbar bg-dark mb-3">
       <div

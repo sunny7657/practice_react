@@ -13,6 +13,18 @@ export class App extends Component {
     todo: data,
   };
 
+  componentDidMount() {
+    const localData = localStorage.getItem('todo');
+    if (localData && JSON.parse(localData).length > 0) {
+      this.setState({ todo: JSON.parse(localData) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todo.length !== this.state.todo.length)
+      localStorage.setItem('todo', JSON.stringify(this.state.todo));
+  }
+
   // handleOpenModal = () => this.setState({ isShowModal: true });
 
   // handleCloseModal = () => this.setState({ isShowModal: false });
@@ -32,8 +44,8 @@ export class App extends Component {
       id: nanoid(),
       completed: false,
     };
-    const isDublicated = this.state.todo.find(el => el.title === data.title);
-    if (isDublicated) return;
+    const isDuplicated = this.state.todo.find(el => el.title === data.title);
+    if (isDuplicated) return;
     this.setState(prev => ({ todo: [...prev.todo, newTodo] }));
   };
 
@@ -51,7 +63,6 @@ export class App extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <>
         <Header showModal={this.toggleModal} />

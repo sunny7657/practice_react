@@ -17,7 +17,6 @@ export class FormCreateTodo extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -34,7 +33,7 @@ export class FormCreateTodo extends Component {
           className="mb-3"
           style={{
             display: 'flex',
-            alignContent: 'space-around',
+            flexDirection: 'column',
           }}
         >
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -50,7 +49,13 @@ export class FormCreateTodo extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className="mb-3">
+        <div
+          className="mb-3"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <label htmlFor="exampleInputPassword1" className="form-label">
             Description
           </label>

@@ -12,7 +12,6 @@ export class Counter extends Component {
   };
 
   render() {
-    console.log('this.state :>> ', this.state);
     return (
       <div
         style={{
